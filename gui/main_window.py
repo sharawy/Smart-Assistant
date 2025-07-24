@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import scrolledtext  # (Note: This is imported but not used)
+from tkinter import scrolledtext 
 
 # Simulated function to search on Google
 def google_search(query):
