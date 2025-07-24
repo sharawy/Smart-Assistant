@@ -3,7 +3,7 @@ from tkinter import scrolledtext, messagebox
 from datetime import datetime
 from threading import Thread
 from config import APP_TITLE, WINDOW_SIZE
-from logic.app_logic import handle_input
+from logic.handler import handle_input
 
 class SmartAssistantApp:
     def __init__(self):

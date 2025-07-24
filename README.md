@@ -1,7 +1,7 @@
 # Smart Assistant
 
 ## Overview
-Smart Assistant is a Python-based desktop application designed to simplify everyday tasks. It provides functionalities such as web searches, system control (brightness and volume adjustments), screenshot capturing, and integration with OpenAI's GPT-4 for advanced queries.
+Smart Assistant is a Python-based desktop application designed to simplify everyday tasks. It provides functionalities such as web searches, system control (brightness and volume adjustments), screenshot capturing, and integration with Google's Gemini LLM for advanced queries.
 
 ## Features
 - **Google Search**: Perform quick searches directly from the app.
@@ -11,7 +11,7 @@ Smart Assistant is a Python-based desktop application designed to simplify every
 - **Control System Volume**: Adjust system volume levels.
 - **Open Microsoft Word**: Launch Microsoft Word directly from the app.
 - **Music Download Simulation**: Simulate music downloads.
-- **OpenAI GPT-4 Integration**: Get responses to complex queries using OpenAI's GPT-4.
+- **Gemini LLM Integration**: Get responses to complex queries using Google's Gemini LLM.
 
 ## Installation
 
@@ -29,8 +29,8 @@ Smart Assistant is a Python-based desktop application designed to simplify every
    ```bash
    pip install -r requirements.txt
    ```
-3. Ensure you have the OpenAI API key set up in your environment variables:
-   - Open config.py and replace your-openai-api-key with your OpenAI API key
+3. Ensure you have a Gemini API key:
+   - Open `config.py` and replace the value of `GEMINI_API_KEY` with your Gemini API key from Google AI Studio.
 4. Configuring Microsoft Word Path
 
     If the default path to Microsoft Word (`C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE`) is incorrect, you can update it in the `config.py` file.
@@ -38,8 +38,9 @@ Smart Assistant is a Python-based desktop application designed to simplify every
    1. Locate the `config.py` file in the project directory.
    2. Find the line:
       ```python
-         WORD_PATH = "C:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+      WORD_PATH = "C:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
       ```
+
 ### Usage
 - Run the application:
   ```bash
@@ -52,3 +53,16 @@ Smart Assistant is a Python-based desktop application designed to simplify every
   - increase brightness
   - lower volume
   - open Microsoft Word
+  - ask any question for Gemini LLM to answer
+
+## Project Structure
+
+- `main.py` - Entry point for the application
+- `config.py` - Configuration (API keys, paths, etc.)
+- `logic/`
+  - `handler.py` - Main handler class for routing user input
+  - `user_intent.py` - Detects user intent and removes trigger words
+  - `command_executor.py` - Executes system and search commands
+  - `llm_query.py` - Handles Gemini LLM queries
+- `gui/`
+  - `main_window.py` - GUI implementation
