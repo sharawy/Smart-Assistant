@@ -1,6 +1,9 @@
 import re
 
+# Identifies user intent from input and extracts clean queries for command execution
 class UserIntent:
+
+     # Detect intent category based on input patterns (e.g., search, brightness, volume)
     @staticmethod
     def detect(user_input):
         text = user_input.lower()
@@ -24,6 +27,7 @@ class UserIntent:
             return "downloadMusic"
         return "llmQuery"
 
+    # Remove command trigger words to isolate the actual search/query text
     @staticmethod
     def remove_trigger(user_input):
         pattern = r"^(search( on)? (google|youtube)|find( on)? (google|youtube)|search|find|google|youtube)\s*"

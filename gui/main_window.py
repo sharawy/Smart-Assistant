@@ -5,7 +5,10 @@ from threading import Thread
 from config import APP_TITLE, WINDOW_SIZE
 from logic.handler import handle_input
 
+# GUI-based smart assistant application using Tkinter
 class SmartAssistantApp:
+
+    # Initialize GUI components and layout
     def __init__(self):
         self.window = tk.Tk()
         self.window.title(APP_TITLE)
@@ -27,6 +30,7 @@ class SmartAssistantApp:
         self.status_label = tk.Label(self.window, text="Ready", fg="green")
         self.status_label.pack()
 
+    # Append user input and assistant response to the output display with timestamp
     def append_to_output(self, user_input, response):
         timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
         self.output_area.configure(state='normal')
@@ -34,6 +38,7 @@ class SmartAssistantApp:
         self.output_area.configure(state='disabled')
         self.output_area.see(tk.END)
 
+    # Log internal actions or events with timestamp
     def log_action(self, message):
         timestamp = datetime.now().strftime("[%H:%M:%S]")
         self.log_area.configure(state='normal')
@@ -41,6 +46,7 @@ class SmartAssistantApp:
         self.log_area.configure(state='disabled')
         self.log_area.see(tk.END)
 
+    # Run LLM processing in a background thread and update UI with results
     def run_llm_threaded(self, user_input):
         try:
             self.status_label.config(text="Processing...")
@@ -53,6 +59,7 @@ class SmartAssistantApp:
             self.log_action(f"Error: {str(e)}")
             self.status_label.config(text="Error")
 
+    # Handle input submission, validate, clear input field, and trigger threaded processing
     def process_input(self):
         user_input = self.input_field.get().strip()
         if not user_input:
@@ -63,5 +70,6 @@ class SmartAssistantApp:
         thread = Thread(target=self.run_llm_threaded, args=(user_input,))
         thread.start()
 
+    # Start the Tkinter main event loop
     def run(self):
         self.window.mainloop()

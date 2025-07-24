@@ -9,10 +9,14 @@ from logic.user_intent import UserIntent
 from logic.command_executor import CommandExecutor
 from logic.llm_query import LLMQuery
 
+# Handles user input by detecting intent and routing to the appropriate command or LLM
 class Handler:
+
+    # Initialize with an LLM query interface
     def __init__(self):
         self.llm = LLMQuery()
 
+    # Detect user intent and execute corresponding command or LLM query
     def handle_input(self, user_input):
         intent = UserIntent.detect(user_input)
         if intent == "googleSearch":
@@ -38,7 +42,9 @@ class Handler:
         else:
             return self.llm.ask(user_input), intent
 
-# GUI does not need to know about the handle_input module-level function
+# Module-level interface for handling input, used by GUI without needing direct class access
 _handler_instance = Handler()
+
+# Proxy function to route input handling through the Handler instance
 def handle_input(user_input):
     return _handler_instance.handle_input(user_input)
