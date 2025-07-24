@@ -1,5 +1,5 @@
-from app import App
+from gui.main_window import SmartAssistantApp
 
 if __name__ == "__main__":
-    app = App()
+    app = SmartAssistantApp()
     app.run()
