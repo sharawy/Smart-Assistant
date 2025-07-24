@@ -31,6 +31,15 @@ Smart Assistant is a Python-based desktop application designed to simplify every
    ```
 3. Ensure you have the OpenAI API key set up in your environment variables:
    - Open config.py and replace your-openai-api-key with your OpenAI API key
+4. Configuring Microsoft Word Path
+
+    If the default path to Microsoft Word (`C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE`) is incorrect, you can update it in the `config.py` file.
+
+   1. Locate the `config.py` file in the project directory.
+   2. Find the line:
+      ```python
+         WORD_PATH = "C:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+      ```
 ### Usage
 - Run the application:
   ```bash

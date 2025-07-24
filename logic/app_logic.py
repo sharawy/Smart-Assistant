@@ -2,7 +2,7 @@ import re
 import webbrowser
 import pyautogui
 import screen_brightness_control as sbc
-from config import OPENAI_API_KEY
+from config import OPENAI_API_KEY, WORD_PATH
 from datetime import datetime
 
 # Optional: OpenAI integration
@@ -65,7 +65,7 @@ def adjust_volume(action):
 def open_word():
     try:
         import os
-        os.startfile("C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE")
+        os.startfile(WORD_PATH)
         return "Microsoft Word opened"
     except Exception as e:
         return f"Could not open Word: {e}"
